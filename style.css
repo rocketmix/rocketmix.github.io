@@ -1,0 +1,32 @@
+html, body {
+    font-family: 'Raleway', sans-serif;
+}
+h1 {
+    font-family: 'merriweather', serif;
+    font-weight: bold;
+    color: #DDDDDD;
+}
+.text-primary {
+    color: #42d3a5 !important;
+}
+
+#particles-container {
+    position: relative;
+    height: 600px;
+    width: 100%;
+    max-width: 100%;
+    padding-right: 0px;
+    padding-left: 0px;
+    background-color: black;
+}  
+#particles, #particles-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+#particles-content {
+    z-index: 10;
+    padding-top: 100px;
+}
