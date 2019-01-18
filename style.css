@@ -10,21 +10,37 @@ h1 {
     color: #42d3a5 !important;
 }
 
+.navbar-brand {
+    font-family: 'Caveat', cursive;
+    font-size: 1.6rem;
+    padding-top: 0rem;
+    padding-bottom: 0rem;
+}
+
 #particles-container {
     position: relative;
-    height: 600px;
+    height: 700px;
     width: 100%;
     max-width: 100%;
     padding-right: 0px;
     padding-left: 0px;
     background-color: black;
-}  
+}
+
+@media (max-width: 575px) {
+    #particles-container {
+        height: 500px;
+    }
+}
+
 #particles, #particles-content {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
 }
 #particles-content {
     z-index: 10;
