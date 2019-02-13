@@ -62,17 +62,28 @@
   <section id="about">
     <div class="container">
       <div class="row">
-        <div class="col-lg-8 mx-auto">
-          <h2>A propos de RocketMiX</h2>
+        <div class="col mx-auto">
+          <h2 class="pb-sm-5">A propos de RocketMiX</h2>
           <p class="lead">RocketMiX est une plateforme de publication d'API, gratuite et open source,  
             destinée aux entreprises qui souhaitent tourner leur SI vers l'extérieur le plus simplement possible !
-            En quelques mots, RocketMiX, c'est :</p>
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col p-sm-5 text-center">
+          <img class="img-fluid" src="img/rocketmix-diagram.png">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col mx-auto"> 
+          <p class="lead">En quelques mots, RocketMiX, c'est :</p>
           <ul>
-            <li>Une intégration ultra simple et prépackagée des produits Netflix&copy; Zuul, Eureka, Spring Boot Admin, et Swagger UI</li>
+            <li>Une intégration ultra simplifiée et prépackagée des produits Netflix&copy; Zuul, Eureka, Ribbon, Spring Boot Admin, et Swagger UI</li>
             <li>Une installation réduite au stricte minimum (juste des éxecutables Linux et rien d'autre! Pas de base de données, de broker, de messaging queue...)
             <li>Un portail utilisateur (avec génération automatique de la documentation), un bac à sable de test des API, une interface graphique de monitoring</li>
             <li>Une configuration visant le "zéro paramétrage"</li>
-            <li>Un template Spring Boot prêt à l'emploi pour construire vos propres API </li>
+            <li>Un Spring Boot Starter module pour vous faciliter la construction de vos propres API </li>
+            <li>Un generateur de scripts Linux pour installer vos API en tant que service systemd </li>
             <li>Une architecture orientées microservices</li>
           </ul>
         </div>
@@ -83,50 +94,66 @@
   <section id="quickstart" class="bg-light">
     <div class="container">
       <div class="row">
-        <div class="col-lg-8 mx-auto">
-          <h2>5 minutes pour démarrer!</h2>
-          <p class="lead">Vous avez une machine Linux 64 bits sous la main avec 2Go de Ram et 500Mo de disque sur disponible ? OK, vous êtes prêt!  </p>
-          <br><br/>
+        <div class="col mx-auto">
+          <h2 class="pb-sm-5">5 minutes pour démarrer!</h2>
+          <p class="lead pb-sm-5">Vous avez une machine Linux 64 bits sous la main avec 2Go de Ram et 500Mo de disque sur disponible ? OK, vous êtes prêt!  </p>
           <div class="alert alert-info" role="alert">
-              Vous vous apprêter à copier et à lancer 3 éxecutables nécessaires à faire fonctionner RocketMiX :
+              Vous allez copier et lancer 3 éxecutables nécessaires à faire fonctionner RocketMiX :
               <ul>
                 <li>Le routeur permettant de recevoir tous les appels aux API. Ce routeur fait aussi office de portail API</li>
-                <li>Le manager qui est en charge de savoir quelles API sont disponibles</li>
+                <li>Le gestionnaire qui est en charge de savoir quelles API sont disponibles</li>
                 <li>Une API HelloWorld de démonstration </li>
               </ul>
               Pour des questions de simplicité, nous allons tout éxecuter sur la même machine. Dans la pratique, nous vous conseillons de répartir vos éxecutables sur différentes machines.
           </div>
           <br><br/>
-          <h4><u>Etape 1 :</u> Téléchargez les éxecutables</h4>
-          <div class="alert alert-light" role="alert">
+          <h4 class="pt-sm-5 pb-sm-3"><u>Etape 1 :</u> Téléchargez les éxecutables</h4>
+          <div class="alert alert-info" role="alert">
             En pré-requis, vous devez installer un JDK 8 ou supérieur. Faites<br/>
             <ul>
               <li><samp>sudo yum install java-1.8.0-openjdk-devel</samp> sous CentOS</li>
               <li>ou <samp>sudo apt install default-jdk</samp> sous Debian et Ubuntu</li>
             </ul>
           </div>
-          Vous pouvez récupérer les executables directement <a href="#" target="_blank">ici</a> ou bien lancer la commande suivante : <kbd>wget ... & wget ... & wget ...</kbd>.
-          <br><br/>
-          Ajoutez les droits d'executions sur ces fichiers <kbd>chmod +x microservices*</kbd>        
-          <br><br/>
-          <br><br/>
-          <h4><u>Etape 2 :</u> Lancez le routeur, le manager et l'API de démo</h4>
-          <br><br/>
-          Dans l'ordre que vous voulez, lancez successivement les différents éxecutables que vous venez de télécharger. Les logs vont sortir à la console; du coup, nous vous conseillons
-          de les lancer dans des terminaux différents. Le routeur va démarrer sur le port 8080. Le manager sur le port 8761. La démo sur le port 8081. Toutes ces briques répondent en http
-          sur leurs ports respectifs. 
-          <br><br/>
-          Ouvrez un navigateur internet et allez sur <a href="http://localhost:8080" target="_blank">http://localhost:8080</a> afin d'accéder à votre portail API!
-          <br><br/>
+          Téléchargez les exécutables (les fichiers avec une extension .war) sur sourceforge :
+          <br/><br/> 
+          <a href="https://sourceforge.net/projects/rocketmix/files/latest/download"><img alt="Download RocketMiX" src="https://a.fsdn.com/con/app/sf-download-button" width=276 height=48 srcset="https://a.fsdn.com/con/app/sf-download-button?button_size=2x 2x"></a>
+          <br/><br/>
+          Ajoutez les droits d'executions sur ces fichiers :
+          <pre><code>
+chmod +x rocketmix-routing-server-xxx.war            
+chmod +x rocketmix-management-server-xxx.war            
+chmod +x rocketmix-services-demo-xxx.war            
+          </code></pre>        
+          <h4 class="pt-sm-5 pb-sm-3"><u>Etape 2 :</u> Lancez le routeur, le manager et l'API de démo</h4>
+          Lancez (dans l'ordre que vous voulez!) les différents éxecutables que vous venez de télécharger dans des terminaux différents :
+          <pre><code>
+./rocketmix-routing-server-xxx.war            
+./rocketmix-management-server-xxx.war            
+./rocketmix-services-demo-xxx.war            
+          </code></pre>            
+          Le routeur va démarrer sur le port 8080 ( <a href="http://localhost:8080" target="_blank">http://localhost:8080</a>). Le gestionnaire sur le port 8761 (<a href="http://localhost:8761/admin" target="_blank">http://localhost:8761/admin</a>). La démo sur le port 8083 (<a href="http://localhost:8083" target="_blank">http://localhost:8083</a>).
+          <br/><br/>
+          Ouvrez un navigateur internet et allez sur <a href="http://localhost:8080" target="_blank">http://localhost:8080</a> afin d'accéder à votre portail API! Il vous permet d'accéder au catalogue de vos API (en fusionnant l'ensemble des flux JSON OpenAPI générés par vos différentes API) ainsi qu'à l'interface de monitoring (dont le compte est admin/admin par défaut).
+          <br/><br/>
           <div class="alert alert-info" role="alert">
-            En production, pas de terminal! Vous pouvez installer tout cela sous forme de services Linux. Vous trouverez des exemples sur le repo github du projet. Vous pouvez aussi
-            vous appuyez sur la <a href="https://docs.spring.io/spring-boot/docs/current/reference/html/deployment-install.html#deployment-systemd-service" target="_blank"></a>documentation officielle de Spring</a>.
+            En production, pas de terminal! Vous pouvez installer tout cela sous forme de services Linux. Lancez les exécutables avec l'option <kbd>--install</kbd>. Cela vous génèrera l'ensembles des scripts et fichiers d'installation en tant que service systemd.
+            Pour en savoir plus, vous pouvez consulter la <a href="https://docs.spring.io/spring-boot/docs/current/reference/html/deployment-install.html#deployment-systemd-service" target="_blank"></a>documentation officielle de Spring</a>.
           </div>  
-          <br><br/>
-          <h4><u>Etape 3 :</u> Développez vos propres API</h4>
-          <br><br/>
-          Vous êtes développeur Java et vous connaissez Spring et Maven ? Attention, ça risque de vous sembler très très simple. Premièrement, clonez le projet ...
-          To be continued...
+          <h4 class="pt-sm-5 pb-sm-3"><u>Etape 3 :</u> Développez vos propres API</h4>
+          Vous êtes développeur Java et vous connaissez Spring et Maven ? Ca tombe bien, nous aussi! Du coup, on vous a préparé un Spring Boot Starter module pour simplifier le lancement de votre projet.
+          Importez l'artifact suivant dans votre pom.xml :
+          
+            <pre><code>
+&lt;!-- https://mvnrepository.com/artifact/io.github.rocketmix/rocketmix-spring-boot-starter --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;io.github.rocketmix&lt;/groupId&gt;
+    &lt;artifactId&gt;rocketmix-spring-boot-starter&lt;/artifactId&gt;
+    &lt;version&gt;1.0.15&lt;/version&gt;
+&lt;/dependency&gt;
+            </code></pre>
+          
+          A partir de là, le plus simple est d'aller consulter le projet de démo et la page github du projet <a href="https://github.com/rocketmix/rocketmix.source" target="_blank">ici</a>.
         </div>
       </div>
     </div>
@@ -135,9 +162,9 @@
   <section id="contact">
     <div class="container">
       <div class="row">
-        <div class="col-lg-8 mx-auto">
-          <h2>Contactez nous</h2>
-          <p class="lead">RocketMiX est une initiative du pôle informatique de l'<a href="https://www.essec.edu" target="_blank">ESSEC Business School</a>. Nous sommes friants d'idées, de remarques et de propositions d'évolution. Rendez-vous sur <a href="https://www.linkedin.com/in/alexandre-de-pellegrin-0791a17" target="_blank">LinkedIn</a> </p>
+        <div class="col mx-auto">
+          <h2 class="pb-sm-5">Contactez nous</h2>
+          <p class="lead">RocketMiX est une initiative du pôle informatique de l'<a href="https://www.essec.edu" target="_blank">ESSEC Business School</a>. Nous sommes friants d'idées, de remarques et de propositions d'évolution. Si vous souhaitez plus d'informations sur le projet, rendez-vous sur <a href="https://www.linkedin.com/in/alexandre-de-pellegrin-0791a17" target="_blank">LinkedIn - Le réseau social Pro</a>. </p>
         </div>
       </div>
     </div>
