@@ -1,4 +1,4 @@
-# Welcome to rocketmix.github.io!
+# Welcome to RocketMiX website!
 
 This git repo contains all web content we publish on rocketmix.github.io.
 If you need to switch to project's source code, go to https://github.com/rocketmix/rocketmix.source
@@ -7,7 +7,7 @@ If you need to switch to project's source code, go to https://github.com/rocketm
 
 This site is developed using Bootstrap 4. All main resources (excepted images and custom js) are delegated to common CDN. Thus, Bootstrap and JQuery are not duplicated here. This site has to be responsive to be easily displayed on mobile devices such as smartphones. 
 
-## Specific integration of flying stars
+## Specific integration of flying stars (particle.js)
 
 We integrated particle.js to display starts on the main content. To perform that, We made an hack to Bootstrap grid with a few lines of javascript.
 
@@ -51,3 +51,7 @@ Look at this marvelous CSS hack :
     padding-top: 100px;
 }
 ```
+
+## How to contribute ?
+
+Please clone this repo and make a pull request. Many thanks for your contribution.
