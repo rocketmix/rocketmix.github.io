@@ -17,6 +17,10 @@ h1 {
     padding-bottom: 0rem;
 }
 
+.bg-light {
+    background-color: #f1f1f1 !important;
+}
+
 #particles-container {
     position: relative;
     min-height: 700px;

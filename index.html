@@ -59,7 +59,7 @@
       </div>
     </div>
 
-  <section id="about">
+  <section id="about" class="p-5">
     <div class="container">
       <div class="row">
         <div class="col mx-auto">
@@ -70,7 +70,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col p-sm-5 text-center">
+        <div class="col p-5 text-center">
           <img class="img-fluid" src="img/rocketmix-diagram.png">
         </div>
       </div>
@@ -91,7 +91,7 @@
     </div>
   </section>
 
-  <section id="quickstart" class="bg-light">
+  <section id="quickstart" class="bg-light p-5">
     <div class="container">
       <div class="row">
         <div class="col mx-auto">
@@ -100,9 +100,9 @@
           <div class="alert alert-info" role="alert">
               Vous allez copier et lancer 3 éxecutables nécessaires à faire fonctionner RocketMiX :
               <ul>
-                <li>Le routeur permettant de recevoir tous les appels aux API. Ce routeur fait aussi office de portail API</li>
-                <li>Le gestionnaire qui est en charge de savoir quelles API sont disponibles</li>
-                <li>Une API HelloWorld de démonstration </li>
+                <li>Le routeur (rocketmix-routing-server) permettant de recevoir tous les appels aux API. Ce routeur fait aussi office de portail API</li>
+                <li>Le gestionnaire (rocketmix-management-server) qui est en charge de savoir quelles API sont disponibles</li>
+                <li>Une API HelloWorld (rocketmix-services-demo) de démonstration  </li>
               </ul>
               Pour des questions de simplicité, nous allons tout éxecuter sur la même machine. Dans la pratique, nous vous conseillons de répartir vos éxecutables sur différentes machines.
           </div>
@@ -134,10 +134,10 @@ chmod +x rocketmix-services-demo-xxx.war
           </code></pre>            
           Le routeur va démarrer sur le port 8080 ( <a href="http://localhost:8080" target="_blank">http://localhost:8080</a>). Le gestionnaire sur le port 8761 (<a href="http://localhost:8761/admin" target="_blank">http://localhost:8761/admin</a>). La démo sur le port 8083 (<a href="http://localhost:8083" target="_blank">http://localhost:8083</a>).
           <br/><br/>
-          Ouvrez un navigateur internet et allez sur <a href="http://localhost:8080" target="_blank">http://localhost:8080</a> afin d'accéder à votre portail API! Il vous permet d'accéder au catalogue de vos API (en fusionnant l'ensemble des flux JSON OpenAPI générés par vos différentes API) ainsi qu'à l'interface de monitoring (dont le compte est admin/admin par défaut).
+          Ouvrez un navigateur internet et allez sur <a href="http://localhost:8080" target="_blank">http://localhost:8080</a> afin d'accéder à votre portail API. Il vous permet d'accéder au catalogue de vos API ainsi qu'à une interface de monitoring (le compte est admin/admin par défaut).
           <br/><br/>
           <div class="alert alert-info" role="alert">
-            En production, pas de terminal! Vous pouvez installer tout cela sous forme de services Linux. Lancez les exécutables avec l'option <kbd>--install</kbd>. Cela vous génèrera l'ensembles des scripts et fichiers d'installation en tant que service systemd.
+            En production, pas de terminal! Vous pouvez installer tout cela sous forme de services Linux. Lancez les exécutables avec l'option <kbd>--install</kbd>. Cela vous génèrera l'ensembles des scripts et fichiers d'installation en tant que service systemd. Pour personnaliser davantage votre portail, utilisez l'option  <kbd>--help</kbd> pour connaitre l'ensemble des paramètres possibles.
             Pour en savoir plus, vous pouvez consulter la <a href="https://docs.spring.io/spring-boot/docs/current/reference/html/deployment-install.html#deployment-systemd-service" target="_blank"></a>documentation officielle de Spring</a>.
           </div>  
           <h4 class="pt-sm-5 pb-sm-3"><u>Etape 3 :</u> Développez vos propres API</h4>
@@ -149,7 +149,7 @@ chmod +x rocketmix-services-demo-xxx.war
 &lt;dependency&gt;
     &lt;groupId&gt;io.github.rocketmix&lt;/groupId&gt;
     &lt;artifactId&gt;rocketmix-spring-boot-starter&lt;/artifactId&gt;
-    &lt;version&gt;1.0.15&lt;/version&gt;
+    &lt;version&gt;1.0.23&lt;/version&gt;
 &lt;/dependency&gt;
             </code></pre>
           
@@ -159,12 +159,12 @@ chmod +x rocketmix-services-demo-xxx.war
     </div>
   </section>
 
-  <section id="contact">
+  <section id="contact" class="p-5">
     <div class="container">
       <div class="row">
         <div class="col mx-auto">
           <h2 class="pb-sm-5">Contactez nous</h2>
-          <p class="lead">RocketMiX est une initiative du pôle informatique de l'<a href="https://www.essec.edu" target="_blank">ESSEC Business School</a>. Nous sommes friants d'idées, de remarques et de propositions d'évolution. Si vous souhaitez plus d'informations sur le projet, rendez-vous sur <a href="https://www.linkedin.com/in/alexandre-de-pellegrin-0791a17" target="_blank">LinkedIn - Le réseau social Pro</a>. </p>
+          <p class="lead">RocketMiX est une initiative du pôle informatique de l'<a href="https://www.essec.edu" target="_blank">ESSEC Business School</a>. Nous sommes friants d'idées, de remarques et de propositions d'évolution. Si vous souhaitez plus d'informations sur le projet, rendez-vous sur <a href="https://www.linkedin.com/in/alexandre-de-pellegrin-0791a17" target="_blank">LinkedIn</a>. </p>
         </div>
       </div>
     </div>
