@@ -101,68 +101,59 @@
           <h2 class="pb-sm-5">5 minutes pour démarrer!</h2>
           <p class="lead pb-sm-5">Vous avez une machine Linux 64 bits sous la main avec 2Go de Ram et 500Mo de disque sur disponible ? OK, vous êtes prêt!  </p>
           <div class="alert alert-info" role="alert">
-              Vous allez copier et lancer 3 éxecutables nécessaires à faire fonctionner RocketMiX :
-              <ul>
-                <li>Le routeur (rocketmix-routing-server) permettant de recevoir tous les appels aux API. Ce routeur fait aussi office de portail API</li>
-                <li>Le gestionnaire (rocketmix-management-server) qui est en charge de savoir quelles API sont disponibles</li>
-                <li>Une API HelloWorld (rocketmix-services-demo) de démonstration  </li>
-              </ul>
-              Pour des questions de simplicité, nous allons tout éxecuter sur la même machine. Dans la pratique, nous vous conseillons de répartir vos éxecutables sur différentes machines.
-          </div>
-          <br><br/>
-          <h4 class="pt-sm-5 pb-sm-3"><u>Etape 1 :</u> Téléchargez les éxecutables</h4>
-          <div class="alert alert-info" role="alert">
             En pré-requis, vous devez installer un JDK 8 ou supérieur. Faites<br/>
             <ul>
               <li><samp>sudo yum install java-1.8.0-openjdk-devel</samp> sous CentOS</li>
               <li>ou <samp>sudo apt install default-jdk</samp> sous Debian et Ubuntu</li>
             </ul>
           </div>
-          Téléchargez les exécutables (les fichiers avec une extension .war) sur sourceforge :
-          <br/><br/> 
-          <a href="https://sourceforge.net/projects/rocketmix/files/latest/download"><img alt="Download RocketMiX" src="https://a.fsdn.com/con/app/sf-download-button" width=276 height=48 srcset="https://a.fsdn.com/con/app/sf-download-button?button_size=2x 2x"></a>
-          <br/><br/>
-          Ajoutez les droits d'executions sur ces fichiers :
-          <pre><code>
-chmod +x rocketmix-routing-server-xxx.war            
-chmod +x rocketmix-management-server-xxx.war            
-chmod +x rocketmix-services-demo-xxx.war            
-          </code></pre>        
-          <h4 class="pt-sm-5 pb-sm-3"><u>Etape 2 :</u> Lancez le routeur, le manager et l'API de démo</h4>
-          Lancez (dans l'ordre que vous voulez!) les différents éxecutables que vous venez de télécharger dans des terminaux différents :
-          <pre><code>
-./rocketmix-routing-server-xxx.war            
-./rocketmix-management-server-xxx.war            
-./rocketmix-services-demo-xxx.war            
-          </code></pre>            
-          Le routeur va démarrer sur le port 8080 ( <a href="http://localhost:8080" target="_blank">http://localhost:8080</a>). Le gestionnaire sur le port 8761 (<a href="http://localhost:8761/admin" target="_blank">http://localhost:8761/admin</a>). La démo sur le port 8083 (<a href="http://localhost:8083" target="_blank">http://localhost:8083</a>).
+          <br/>
+          <p>Téléchargez et lancez 2 éxecutables nécessaires à faire fonctionner RocketMiX comprenant le serveur et une api de démonstration, tout ça en une seule ligne de commande : </p>
+          <br/>
+          <div class="alert alert-dark" role="alert">
+              <samp>wget https://sourceforge.net/projects/rocketmix/files/1.0.29/rocketmix-all-in-one-server-1.0.29.war/download -O rocketmix-all-in-one-server.war && chmod +x rocketmix-all-in-one-server.war && wget https://sourceforge.net/projects/rocketmix/files/1.0.29/rocketmix-services-demo-1.0.29.war/download -O rocketmix-services-demo.war && chmod +x rocketmix-services-demo.war && export PID_FOLDER=$(pwd) && export LOG_FOLDER=$(pwd) && ./rocketmix-all-in-one-server.war start && ./rocketmix-services-demo.war start</samp>
+          </div>
+          <br>
+          Le server API va démarrer sur le port 8080 ( <a href="http://localhost:8080" target="_blank">http://localhost:8080</a>) tandis que une API de démonstration va démarrer sur le port 8083 (<a href="http://localhost:8083" target="_blank">http://localhost:8083</a>).
           <br/><br/>
           Ouvrez un navigateur internet et allez sur <a href="http://localhost:8080" target="_blank">http://localhost:8080</a> afin d'accéder à votre portail API. Il vous permet d'accéder au catalogue de vos API ainsi qu'à une interface de monitoring (le compte est admin/admin par défaut).
           <br/><br/>
           <div class="alert alert-info" role="alert">
-            En production, pas de terminal! Vous pouvez installer tout cela sous forme de services Linux. Lancez les exécutables avec l'option <kbd>--install</kbd>. Cela vous génèrera l'ensembles des scripts et fichiers d'installation en tant que service systemd. Pour personnaliser davantage votre portail, utilisez l'option  <kbd>--help</kbd> pour connaitre l'ensemble des paramètres possibles.
-            Pour en savoir plus, vous pouvez consulter la <a href="https://docs.spring.io/spring-boot/docs/current/reference/html/deployment-install.html#deployment-systemd-service" target="_blank"></a>documentation officielle de Spring</a>.
+            En production, pas de terminal! Vous pouvez installer tout cela sous forme de services Linux. Lancez les exécutables avec l'option <kbd>install</kbd>. Cela vous génèrera l'ensembles des fichiers d'installation et déploiera le tout en tant que service systemd.
+            Respirez : systemd est sécurisé et vous garantie le redémarrage de vos services en cas d'arrêt. Avec RocketMiX, vous avez le choix du déploiement. Vous pouvez déployer un serveur API intégré (all-in-one) ou bien déployer un serveur de routage d'un côté (routing-server) et un serveur d'administration ailleurs (management-server).
           </div>  
-          <h4 class="pt-sm-5 pb-sm-3"><u>Etape 3 :</u> Développez vos propres API</h4>
-          Vous êtes développeur Java et vous connaissez Spring et Maven ? Ca tombe bien, nous aussi! Du coup, on vous a préparé un Spring Boot Starter module pour simplifier le lancement de votre projet.
-          Importez l'artifact suivant dans votre pom.xml :
-          
-            <pre><code>
-&lt;!-- https://mvnrepository.com/artifact/io.github.rocketmix/rocketmix-spring-boot-starter --&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;io.github.rocketmix&lt;/groupId&gt;
-    &lt;artifactId&gt;rocketmix-spring-boot-starter&lt;/artifactId&gt;
-    &lt;version&gt;1.0.23&lt;/version&gt;
-&lt;/dependency&gt;
-            </code></pre>
-          
-          A partir de là, le plus simple est d'aller consulter le projet de démo et la page github du projet <a href="https://github.com/rocketmix/rocketmix.source" target="_blank">ici</a>.
         </div>
       </div>
     </div>
   </section>
 
-  <section id="contact" class="p-5">
+  <section id="Développez vos propres API" class="p-5">
+    <div class="container">
+      <div class="row">
+          <div class="col mx-auto">
+              <h2 class="pb-sm-5">Développez vos propres API (en un temps record)</h2>
+              <p class="lead pb-sm-5">Vous êtes développeur Java et vous connaissez Spring et Maven ? Ca tombe bien, nous aussi!</p>
+          </div>   
+      </div>
+      <div class="row">
+        <div class="col mx-auto">
+          <p class="">On vous a préparé un Spring Boot Starter module pour simplifier le lancement de votre projet. Importez l'artifact suivant dans votre pom.xml :</p>
+          <div class="alert alert-warning" role="alert"> 
+            <pre><code>&lt;!-- https://mvnrepository.com/artifact/io.github.rocketmix/rocketmix-spring-boot-starter --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;io.github.rocketmix&lt;/groupId&gt;
+    &lt;artifactId&gt;rocketmix-spring-boot-starter&lt;/artifactId&gt;
+    &lt;version&gt;1.0.29&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+          </div>
+          <p class="">A partir de là, le plus simple est d'aller consulter le projet de démo et la page github du projet <a href="https://github.com/rocketmix/rocketmix.source" target="_blank">ici</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="contact" class="bg-light p-5">
     <div class="container">
       <div class="row">
         <div class="col mx-auto">
