@@ -1,6 +1,6 @@
 # Welcome to RocketMiX website!
 
-This git repo contains all web content we publish on rocketmix.github.io.
+This git repo contains all web content we publish on https://rocketmix.github.io.
 If you need to switch to project's source code, go to https://github.com/rocketmix/rocketmix.source
 
 ## Development technologies
