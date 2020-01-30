@@ -81,14 +81,15 @@
         <div class="col mx-auto"> 
           <p class="lead">En quelques mots, RocketMiX, c'est :</p>
           <ul>
-            <li>Une intégration ultra simplifiée et prépackagée des produits Netflix&copy; Zuul, Eureka, Ribbon, Spring Boot Admin, et Swagger UI</li>
-            <li>Une installation réduite au stricte minimum (juste des éxecutables Linux et rien d'autre! Pas de base de données, de broker, de messaging queue...)
-            <li>Un portail utilisateur (avec génération automatique de la documentation), un bac à sable de test des API, une interface graphique de monitoring</li>
-            <li>Une configuration visant le "zéro paramétrage"</li>
-            <li>Un Spring Boot Starter module pour vous faciliter la construction de vos propres API </li>
-            <li>Un generateur de scripts Linux pour installer vos API en tant que service systemd </li>
             <li>Une architecture orientées microservices</li>
+            <li>Une intégration ultra simplifiée et prépackagée des produits Netflix&copy; Zuul, Eureka, Ribbon, Spring Boot Admin, et Swagger UI</li>
+            <li>Une installation réduite au strict minimum (juste un éxecutable Linux et rien d'autre! Pas de base de données, pas de broker, pas de messaging queue...)
+            <li>Un portail utilisateur (avec génération automatique de la documentation), un bac à sable de test des API, une interface graphique de monitoring</li>
+            <li>Une configuration "zéro paramétrage"</li>
+            <li>Un module Spring Boot Starter pour vous aider à construire vos propres API </li>
+            <li>Une integration forte Linux pour vous permettre installer vos API en tant que service Linux (systemd) </li>
           </ul>
+          <p class="lead">Besoin d'une démo ? <a href="https://rocketmix.herokuapp.com/" target="_blank">Testez RocketMix grâce à Heroku.</a> (Identifiez-vous avec admin/admin)</p>
         </div>
       </div>
     </div>
@@ -108,19 +109,18 @@
             </ul>
           </div>
           <br/>
-          <p>Téléchargez et lancez 2 éxecutables nécessaires à faire fonctionner RocketMiX comprenant le serveur et une api de démonstration, tout ça en une seule ligne de commande : </p>
+          <p>Téléchargez et lancez l'éxecutable Linux (une seule ligne de commande suffit!) : </p>
           <br/>
           <div class="alert alert-dark" role="alert">
-              <samp>wget https://sourceforge.net/projects/rocketmix/files/1.0.29/rocketmix-all-in-one-server-1.0.29.war/download -O rocketmix-all-in-one-server.war && chmod +x rocketmix-all-in-one-server.war && wget https://sourceforge.net/projects/rocketmix/files/1.0.29/rocketmix-services-demo-1.0.29.war/download -O rocketmix-services-demo.war && chmod +x rocketmix-services-demo.war && export PID_FOLDER=$(pwd) && export LOG_FOLDER=$(pwd) && ./rocketmix-all-in-one-server.war start && ./rocketmix-services-demo.war start</samp>
+              <samp>wget https://sourceforge.net/projects/rocketmix/files/1.0.32/rocketmix-routing-server-1.0.32.war/download -O rocketmix-routing-server.war && chmod +x rocketmix-routing-server.war && export PID_FOLDER=$(pwd) && export LOG_FOLDER=$(pwd) && ./rocketmix-routing-server.war run</samp>
           </div>
           <br>
-          Le server API va démarrer sur le port 8080 ( <a href="http://localhost:8080" target="_blank">http://localhost:8080</a>) tandis que une API de démonstration va démarrer sur le port 8083 (<a href="http://localhost:8083" target="_blank">http://localhost:8083</a>).
-          <br/><br/>
-          Ouvrez un navigateur internet et allez sur <a href="http://localhost:8080" target="_blank">http://localhost:8080</a> afin d'accéder à votre portail API. Il vous permet d'accéder au catalogue de vos API ainsi qu'à une interface de monitoring (le compte est admin/admin par défaut).
+          Le serveur API va démarrer sur le port 8080 (<a href="http://localhost:8080" target="_blank">http://localhost:8080</a>).
+          Ouvrez un navigateur internet pour accéder à votre portail API. Il vous permet d'accéder au catalogue de vos API ainsi qu'à une interface de monitoring (le compte est admin/admin par défaut).
           <br/><br/>
           <div class="alert alert-info" role="alert">
-            En production, pas de terminal! Vous pouvez installer tout cela sous forme de services Linux. Lancez les exécutables avec l'option <kbd>install</kbd>. Cela vous génèrera l'ensembles des fichiers d'installation et déploiera le tout en tant que service systemd.
-            Respirez : systemd est sécurisé et vous garantie le redémarrage de vos services en cas d'arrêt. Avec RocketMiX, vous avez le choix du déploiement. Vous pouvez déployer un serveur API intégré (all-in-one) ou bien déployer un serveur de routage d'un côté (routing-server) et un serveur d'administration ailleurs (management-server).
+            En production, vous pouvez installer votre serveur (et vos APIs) sous forme de service Linux. Lancez <kbd>rocketmix-routing-server.war install</kbd> pour déployer votre serveur en tant que service Linux (systemd).
+            Respirez : systemd est sécurisé et vous garantie le redémarrage de votre serveur en cas d'arrêt. Et comme RocketMiX s'appuie sur des standards Linux, vous pouvez également contrôler votre serveur avec la commande  <kbd>systemctl status rocketmix-routing-server</kbd>.
           </div>  
         </div>
       </div>
@@ -143,10 +143,10 @@
 &lt;dependency&gt;
     &lt;groupId&gt;io.github.rocketmix&lt;/groupId&gt;
     &lt;artifactId&gt;rocketmix-spring-boot-starter&lt;/artifactId&gt;
-    &lt;version&gt;1.0.29&lt;/version&gt;
+    &lt;version&gt;1.0.32&lt;/version&gt;
 &lt;/dependency&gt;</code></pre>
           </div>
-          <p class="">A partir de là, le plus simple est d'aller consulter le projet de démo et la page github du projet <a href="https://github.com/rocketmix/rocketmix.source" target="_blank">ici</a>.</p>
+          <p class="">A partir de là, le plus simple est d'aller <a href="https://github.com/rocketmix/rocketmix.source/tree/master/rocketmix-services-demo" target="_blank">consulter le projet de démo sur github</a>.</p>
         </div>
       </div>
     </div>
@@ -167,7 +167,7 @@
   <!-- Footer -->
   <footer class="py-5 bg-dark">
     <div class="container">
-      <p class="m-0 text-center text-white">RocketMiX.github.io - 2019</p>
+      <p class="m-0 text-center text-white">RocketMiX.github.io - 2020</p>
     </div>
     <!-- /.container -->
   </footer>
