@@ -52,7 +52,7 @@
           <div class="container">
             <div class="row">
               <div class="col">
-                <h1>Bienvenue sur la <span class="text-primary">Plateforme API</span><br/>la plus simple du marché</h1>
+                <h1>Bienvenue sur la <span class="text-primary">Plateforme API</span><br/>la plus simple du marché<br/>pour échanger vos données</h1>
               </div>
             </div>
             <div class="row">
@@ -70,7 +70,7 @@
       <div class="row">
         <div class="col mx-auto">
           <h2 class="pb-sm-5">A propos de RocketMiX</h2>
-          <p class="lead">RocketMiX est une plateforme de publication d'API, gratuite et open source,  
+          <p class="lead">Vous souhaitez échanger des données de toutes sortes avec vos entreprises partenaires ? Vous en avez assez des interfaces informatiques avec des délais de traitement ? RocketMiX est la plateforme de publication d'API, gratuite et open source,  
             destinée aux entreprises qui souhaitent tourner leur SI vers l'extérieur le plus simplement possible !
           </p>
         </div>
@@ -84,13 +84,14 @@
         <div class="col mx-auto"> 
           <p class="lead">En quelques mots, RocketMiX, c'est :</p>
           <ul>
+            <li>Une soluiion d'APIsation pour échanger vos données</li>
             <li>Une architecture orientées microservices</li>
-            <li>Une intégration ultra simplifiée et prépackagée des produits Netflix&copy; Zuul, Eureka, Ribbon, Spring Boot Admin, et Swagger UI</li>
-            <li>Une installation réduite au strict minimum (juste un éxecutable Linux et rien d'autre! Pas de base de données, pas de broker, pas de messaging queue...)
-            <li>Un portail utilisateur (avec génération automatique de la documentation), un bac à sable de test des API, une interface graphique de monitoring</li>
+            <li>Une intégration ultra simplifiée et prépackagée de produits reconnus tels que Netflix&copy; Zuul, Eureka, Ribbon, Spring Boot Admin, et Swagger UI</li>
+            <li>Une installation réduite au strict minimum (juste un éxecutable Linux et rien d'autre!
+            <li>Un portail utilisateur (avec génération automatique de la documentation), un bac à sable de test des API, une interface graphique d'administration</li>
             <li>Une configuration "zéro paramétrage"</li>
-            <li>Un module Spring Boot Starter pour vous aider à construire vos propres API </li>
-            <li>Une integration forte Linux pour vous permettre installer vos API en tant que service Linux (systemd) </li>
+            <li>Un kit de démarrage "Spring Boot Starter" pour vous aider à construire vos propres API </li>
+            <li>Une integration native Linux pour vous permettre installer vos API en tant que service Linux (systemd) </li>
           </ul>
           <p class="lead">Besoin d'une démo ? <a href="https://rocketmix.herokuapp.com/" target="_blank">Testez RocketMix grâce à Heroku.</a> (Identifiez-vous avec admin/admin)</p>
         </div>
@@ -118,12 +119,12 @@
               <samp>wget https://sourceforge.net/projects/rocketmix/files/1.0.43-SNAPSHOT/rocketmix-routing-server-1.0.43-SNAPSHOT.war/download -O rocketmix-routing-server.war && chmod +x rocketmix-routing-server.war && export PID_FOLDER=$(pwd) && export LOG_FOLDER=$(pwd) && ./rocketmix-routing-server.war run</samp>
           </div>
           <br>
-          Le serveur API va démarrer sur le port 8080 (<a href="http://localhost:8080" target="_blank">http://localhost:8080</a>).
-          Ouvrez un navigateur internet pour accéder à votre portail API. Il vous permet d'accéder au catalogue de vos API ainsi qu'à une interface de monitoring (le compte est admin/admin par défaut).
+          Votre serveur API démarre sur le port 8080 (<a href="http://localhost:8080" target="_blank">http://localhost:8080</a>).
+          Ouvrez un navigateur internet pour accéder à votre portail web. Consultez votre catalogue d'API et accéder à votre interface d'administration (le compte est admin/admin par défaut).
           <br/><br/>
           <div class="alert alert-info" role="alert">
             En production, vous pouvez installer votre serveur (et vos APIs) sous forme de service Linux. Lancez <kbd>rocketmix-routing-server.war install</kbd> pour déployer votre serveur en tant que service Linux (systemd).
-            Respirez : systemd est sécurisé et vous garantie le redémarrage de votre serveur en cas d'arrêt. Et comme RocketMiX s'appuie sur des standards Linux, vous pouvez également contrôler votre serveur avec la commande  <kbd>systemctl status rocketmix-routing-server</kbd>.
+            Respirez : systemd est sécurisé et vous garantit le redémarrage de votre serveur en cas de panne. Avec RocketMiX et Linux, vous pouvez dormir l'esprit tranquille.
           </div>  
         </div>
       </div>
@@ -135,12 +136,12 @@
       <div class="row">
           <div class="col mx-auto">
               <h2 class="pb-sm-5">Développez vos propres API (en un temps record)</h2>
-              <p class="lead pb-sm-5">Vous êtes développeur Java et vous connaissez Spring et Maven ? Ca tombe bien, nous aussi!</p>
+              <p class="lead pb-sm-5">Vous êtes développeur Java et vous connaissez Spring et Maven ? Ca tombe bien!</p>
           </div>   
       </div>
       <div class="row">
         <div class="col mx-auto">
-          <p class="">On vous a préparé un Spring Boot Starter module pour simplifier le lancement de votre projet. Importez l'artifact suivant dans votre pom.xml :</p>
+          <p class="">On vous a préparé un module Spring Boot pour simplifier le lancement de votre projet. Importez l'artifact suivant dans votre pom.xml :</p>
           <div class="alert alert-warning" role="alert"> 
             <pre><code>&lt;!-- https://mvnrepository.com/artifact/io.github.rocketmix/rocketmix-spring-boot-starter --&gt;
 &lt;dependency&gt;
@@ -160,8 +161,8 @@
     <div class="container">
       <div class="row">
         <div class="col mx-auto">
-          <h2 class="pb-sm-5">Contactez nous</h2>
-          <p class="lead">RocketMiX est utilisé avec bonheur et simplicité à la Direction des Systèmes d'Information de l'<a href="https://www.essec.edu" target="_blank">ESSEC Business School</a>. Ce projet est porté par <a href="https://www.linkedin.com/in/alexandre-de-pellegrin-0791a17" target="_blank">Alexandre de Pellegrin</a>, Architecte Solutions Innovantes, et toute l'équipe du pôle WEB/CRM. Vous pouvez évidemment nous contacter ou contribuer directement sur GitHub.</p>
+          <h2 class="pb-sm-5">Contactez moi</h2>
+          <p class="lead">RocketMiX est utilisé avec bonheur et simplicité à la Direction des Systèmes d'Information de l'<a href="https://www.essec.edu" target="_blank">ESSEC Business School</a>. Ce projet est conduit par <a href="https://www.linkedin.com/in/alexandre-de-pellegrin-0791a17" target="_blank">Alexandre de Pellegrin</a>, Architecte Solutions Innovantes, et toute l'équipe du pôle WEB/CRM. Vous pouvez évidemment me contacter ou contribuer directement au projet sur GitHub.</p>
         </div>
       </div>
     </div>
